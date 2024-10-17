@@ -20,7 +20,7 @@ sub write_to_file
 	my $title = "Отчёт\n";
 	my $weekly_income_column = "Доходы за неделю" . "\t" . "$self->{weekly_income}\n";
 	my $weekly_expenses_column = "Расходы за неделю" . "\t" . "$self->{weekly_expenses}\n";
-	my $balance_column = "Сальдо" . "\t\t\t\t" . "$self->{balance}\n";
+	my $balance_column = "Сальдо" . "\t\t\t" . "$self->{balance}\n";
 	my $expenses_plan_column = "План расходов" . "\t\t" . "$self->{expenses_plan}\n";
 	my $departure_plan = "Отход от плана" . "\t\t" . "$self->{departure_plan}\n";
 
