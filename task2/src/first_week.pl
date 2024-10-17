@@ -9,28 +9,28 @@ use Income;
 use Report;
 
 my $expenses = Expenses->new({
-							 household_needs => [456, 500, 0, 456, 0, 0, 0, 0, 0],
-							 bad_habits => [0, 0, 0, 0, 0, 0, 0, 0, 0],
-							 hygiene_and_health => [37100, 35000, 0, 0, 0, 0, 0, 4500, 32600],
+							 household_needs => [5383, 5000, 0, 136, 0, 0, 0, 5148, 99],
+							 bad_habits => [46, 0, 0, 0, 0, 9, 0, 37, 0],
+							 hygiene_and_health => [0, 0, 0, 0, 0, 0, 0, 0, 0],
 							 clothes => [0, 0, 0, 0, 0, 0, 0, 0, 0],
 							 trips => [0, 0, 0, 0, 0, 0, 0, 0, 0],
-							 food_products => [785, 1500, 67, 470, 90, 0, 158, 0, 0],
+							 food_products => [277, 1500, 0, 113, 0, 0, 0, 100, 64],
 							 entertainments => [0, 0, 0, 0, 0, 0, 0, 0, 0],
 							 connection => [0, 0, 0, 0, 0, 0, 0, 0, 0],
-							 total_per_week => [38341, 37000],
-							 total_per_day => [67, 926, 90, 0, 158, 4500, 32600]});
+							 total_per_week => [5706, 6500],
+							 total_per_day => [0, 249, 0, 9, 0, 5285, 163]});
 
 my $income = Income->new({
-						 salary => 1579,
+						 salary => 14298,
 						 parents_money => 0,
-						 total => 1579 + 0});
+						 total => 14298 + 0});
 
 my $report = Report->new({
-						 weekly_income => 1579,
-						 weekly_expenses => 38341,
-						 balance => 36762,
-						 expenses_plan => 37000,
-						 departure_plan => 258});
+						 weekly_income => 14298,
+						 weekly_expenses => 5706,
+						 balance => 8592,
+						 expenses_plan => 6500,
+						 departure_plan => 2092});
 
 my $folder = "../files/first_week/";
 my $expenses_file = $folder . "expenses.txt";
