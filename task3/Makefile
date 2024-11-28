@@ -1,24 +1,33 @@
-ANNUITET_DIR := annuitet
+SRC_DIR := src
+REPORT_DIR := report
 
-ANNUITET := $(ANNUITET_DIR)/annuitet.pdf
+SRC := $(SRC_DIR)/main
+REPORT := $(REPORT_DIR)/report.pdf
 
+DN := dune exec
 PDFLTX := pdflatex
 
 OUTPUT := --output-directory
 
 .PHONY: all
 
-all: run-annuitet clean-aux
+all: run-src run-report clean-aux
 
-run-annuitet: $(ANNUITET)
+run-src: $(SRC)
+	@echo "Running main.."
+	cd $<
+	$(DN) main
+	cd ../../
+
+run-report: $(REPORT)
 	@echo "Running report.."
 	@zathura $<
 
-$(ANNUITET): $(ANNUITET_DIR)/*.tex
+$(REPORT): $(REPORT_DIR)/*.tex
 	@echo "Building pdf.."
-	$(PDFLTX) $(OUTPUT)=$(ANNUITET_DIR) $<
-	$(PDFLTX) $(OUTPUT)=$(ANNUITET_DIR) $<
+	$(PDFLTX) $(OUTPUT)=$(REPORT_DIR) $<
+	$(PDFLTX) $(OUTPUT)=$(REPORT_DIR) $<
 
 clean-aux:
 	@echo "Cleaning up auxiliary files.."
-	@find $(ANNUITET_DIR) -type f ! -name '*.pdf' ! -name '*.tex' -delete
+	@find $(REPORT_DIR) -type f ! -name '*.pdf' ! -name '*.tex' -delete

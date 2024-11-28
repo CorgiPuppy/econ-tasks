@@ -1,0 +1,16 @@
+# dune exec main
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/corgi/.cache/dune/db
+# Workspace root: /home/corgi/git_repositories/economics_tasks/task3/src/main
+# Auto-detected concurrency: 4
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/corgi/.opam/cs3110-2024fa/bin/ocamlc.opt -config > /tmp/dune_19725f_output
