@@ -4,7 +4,7 @@ let r = 24.;;
 let n =
     ( /. ) 4. 12.;;
 
-let folder = "../../report/";;
+let folder = "report/";;
 let f_ann =
     String.cat folder "annuitet.csv"
 let f_dif =
