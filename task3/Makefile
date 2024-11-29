@@ -11,9 +11,9 @@ PDFLTX := pdflatex
 
 OUTPUT := --output-directory
 
-.PHONY: all clean-report
+.PHONY: all
 
-all: run-src clean run-report clean-aux
+all: clean-report run-src clean run-report clean-aux
 
 run-src: $(EXE)
 	@echo "Running exe.."
