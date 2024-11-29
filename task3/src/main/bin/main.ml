@@ -24,7 +24,7 @@ let calc_A s r n =
 
 let rec write_to_file_ann oc month s a percent dif n total_paid overpayment =
     if month > n then
-        Printf.fprintf oc "%.0f\n%.0f" total_paid overpayment
+        Printf.fprintf oc "Упл. всего (р.),%.0f,,,\nОбщ. перепл. (р.),%.0f,,," total_paid overpayment
 	else
         begin
             Printf.fprintf oc "%.0f,%.0f,%.0f,%.0f,%.0f\n" month s a percent dif;
@@ -44,7 +44,7 @@ let calc_D dif s r =
 
 let rec write_to_file_dif oc month s d percent dif n total_paid overpayment =
     if month > n then
-        Printf.fprintf oc "%.0f\n%.0f" total_paid overpayment
+        Printf.fprintf oc "Упл. всего (р.),%.0f,,,\nОбщ. перепл. (р.),%.0f,,," total_paid overpayment
 	else
         begin
             Printf.fprintf oc "%.0f,%.0f,%.0f,%.0f,%.0f\n" month s d percent dif;
@@ -59,6 +59,7 @@ let rec write_to_file_dif oc month s d percent dif n total_paid overpayment =
         end ;;
 let () =
     let oc = open_out f_ann in
+        Printf.fprintf oc "Мес.,Ост. долга (р.),Общ. сум. выплат (р.),Упл. проц. (р.),Осн. долг (р.)\n";
         let month_temp = 1. in
             let n_temp = (calc_n n) in
                 let r_temp = (calc_r r) in
@@ -69,6 +70,7 @@ let () =
                                     write_to_file_ann oc month_temp s_temp a_temp percent_temp dif_temp n_temp 0. 0.;
     close_out oc;
     let oc = open_out f_dif in
+        Printf.fprintf oc "Мес.,Ост. долга (р.),Общ. сум. выплат (р.),Упл. проц. (р.),Осн. долг (р.)\n";
         let month_temp = 1. in
             let n_temp = (calc_n n) in
                 let r_temp = (calc_r r) in

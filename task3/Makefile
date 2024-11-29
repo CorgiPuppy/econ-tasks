@@ -11,7 +11,7 @@ PDFLTX := pdflatex
 
 OUTPUT := --output-directory
 
-.PHONY: all
+.PHONY: all clean-report
 
 all: run-src clean run-report clean-aux
 
@@ -43,3 +43,7 @@ $(REPORT): $(REPORT_DIR)/*.tex
 clean-aux:
 	@echo "Cleaning up auxiliary files.."
 	@find $(REPORT_DIR) -type f ! -name '*.pdf' ! -name '*.tex' -delete
+
+clean-report:
+	@echo "Cleaning up a report.."
+	@$(RM) $(REPORT)

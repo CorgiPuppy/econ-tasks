@@ -1,7 +1,24 @@
 \documentclass[12pt, a4paper]{report}
+\usepackage[top=1cm, left=1cm, right=1cm]{geometry}
 
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
+
+\usepackage{csvsimple}
+
+	\makeatletter
+	\csvset{
+	  autotabularcenter/.style={
+		file=#1,
+		after head=\csv@pretable\begin{tabular}{|*{\csv@columncount}{c|}}\csv@tablehead,
+		table head=\hline\csvlinetotablerow\\\hline,
+		late after line=\\\hline,
+		table foot=\\\hline,
+		late after last line=\csv@tablefoot\end{tabular}\csv@posttable,
+		command=\csvlinetotablerow},
+	}
+	\makeatother
+	\newcommand{\csvautotabularcenter}[2][]{\csvloop{autotabularcenter={#2},#1}}
 
 \begin{document}
 	\( A = (S - S_{0}) * \frac{r (1 + r)^n}{(1 + r)^n - 1} \) \\
@@ -21,5 +38,7 @@
 	A(Андрей) = \( (7000000 - 1108129) * \frac{\frac{29.2}{100*12} (1 + \frac{29.2}{100*12})^{(30 * 12)}}{(1 + \frac{29.2}{100*12})^{(30 * 12)} - 1} = 154650 \) рублей \\
 	A(Иван) = \( (14200000 - 4000000) * \frac{\frac{30}{100*12} (1 + \frac{30}{100*12})^{(30 * 12)}}{(1 + \frac{30}{100*12})^{(30 * 12)} - 1} = 255035\) рублей \\
 
-
+	\csvautotabularcenter{../calculations/annuitet.csv}
+	\\ \\ \\ 
+	\csvautotabularcenter{../calculations/differential.csv}
 \end{document}
