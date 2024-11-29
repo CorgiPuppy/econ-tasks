@@ -1,8 +1,7 @@
-let s = 400000.;;
-let s_0 = 0.;;
-let r = 24.;;
-let n =
-    ( /. ) 4. 12.;;
+let s = 7293260.;;
+let s_0 = 1108129.;;
+let r = 29.2;;
+let n = 20.;;
 
 let folder = "calculations/";;
 let f_ann =
@@ -25,7 +24,7 @@ let calc_A s r n =
 let rec write_to_file_ann oc month s a percent dif n total_paid overpayment =
     if month > n then
         Printf.fprintf oc "Упл. всего (р.),%.0f,,,\nОбщ. перепл. (р.),%.0f,,," total_paid overpayment
-	else
+	else if month <= 5. || month > (( -. ) n 5.) then
         begin
             Printf.fprintf oc "%.0f,%.0f,%.0f,%.0f,%.0f\n" month s a percent dif;
             let month = (( +. ) month 1.) in
@@ -36,7 +35,29 @@ let rec write_to_file_ann oc month s a percent dif n total_paid overpayment =
                                 let percent = (( *. ) s r) in
                                     let dif = (( -. ) a percent) in
                                         write_to_file_ann oc month s a percent dif n total_paid overpayment
-        end ;;
+        end
+    else if month = (( /. ) n 2.) then
+        begin
+            Printf.fprintf oc "..,..,..,..,..\n";
+            let month = (( +. ) month 1.) in
+                let r = (calc_r r) in
+                    let total_paid = (( +. ) total_paid a) in
+                        let s = (calc_S s dif) in
+                            let overpayment = (( +. ) overpayment percent) in
+                                let percent = (( *. ) s r) in
+                                    let dif = (( -. ) a percent) in
+                                        write_to_file_ann oc month s a percent dif n total_paid overpayment
+        end    
+    else (
+        let month = (( +. ) month 1.) in
+            let r = (calc_r r) in
+                let total_paid = (( +. ) total_paid a) in
+                    let s = (calc_S s dif) in
+                        let overpayment = (( +. ) overpayment percent) in
+                            let percent = (( *. ) s r) in
+                                let dif = (( -. ) a percent) in
+                                    write_to_file_ann oc month s a percent dif n total_paid overpayment
+        )          
 
 let calc_D dif s r =
     let s_d = (( *. ) s r) in
@@ -45,7 +66,7 @@ let calc_D dif s r =
 let rec write_to_file_dif oc month s d percent dif n total_paid overpayment =
     if month > n then
         Printf.fprintf oc "Упл. всего (р.),%.0f,,,\nОбщ. перепл. (р.),%.0f,,," total_paid overpayment
-	else
+	else if month <= 5. || month > (( -. ) n 5.) then
         begin
             Printf.fprintf oc "%.0f,%.0f,%.0f,%.0f,%.0f\n" month s d percent dif;
             let month = (( +. ) month 1.) in
@@ -56,7 +77,30 @@ let rec write_to_file_dif oc month s d percent dif n total_paid overpayment =
                                 let percent = (( *. ) s r) in
                                     let d = (( +. ) dif percent) in
                                         write_to_file_dif oc month s d percent dif n total_paid overpayment
-        end ;;
+        end
+    else if month = (( /. ) n 2.) then
+        begin
+            Printf.fprintf oc "..,..,..,..,..\n";
+            let month = (( +. ) month 1.) in
+                let r = (calc_r r) in
+                    let total_paid = (( +. ) total_paid d) in
+                        let s = (calc_S s dif) in
+                            let overpayment = (( +. ) overpayment percent) in
+                                let percent = (( *. ) s r) in
+                                    let d = (( +. ) dif percent) in
+                                        write_to_file_dif oc month s d percent dif n total_paid overpayment
+        end
+    else (
+        let month = (( +. ) month 1.) in
+            let r = (calc_r r) in
+                let total_paid = (( +. ) total_paid d) in
+                    let s = (calc_S s dif) in
+                        let overpayment = (( +. ) overpayment percent) in
+                            let percent = (( *. ) s r) in
+                                let d = (( +. ) dif percent) in
+                                    write_to_file_dif oc month s d percent dif n total_paid overpayment
+    ) 			
+
 let () =
     let oc = open_out f_ann in
         Printf.fprintf oc "Мес.,Ост. долга (р.),Общ. сум. выплат (р.),Упл. проц. (р.),Осн. долг (р.)\n";
@@ -77,6 +121,6 @@ let () =
                     let s_temp = (calc_S s s_0) in
                         let d_temp = (calc_D (( /. ) s_temp n_temp) s_temp r_temp) in
                             let percent_temp = (( *. ) s_temp r_temp) in
-                                let dif_temp = (( -. ) d_temp percent_temp) in
+                                let dif_temp = (( /. ) s_temp n_temp) in
                                     write_to_file_dif oc month_temp s_temp d_temp percent_temp dif_temp n_temp 0. 0.;
-    close_out oc;
+		close_out oc;
