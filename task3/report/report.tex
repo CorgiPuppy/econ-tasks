@@ -28,17 +28,34 @@
 	2) n = 30 лет, \\
 	r = 29.2\% (Андрей), \\
 	r = 30\% (Иван), \\
+	\( S = 7293260 \) рублей (Андрей) \\
+	\( S = 14200000 \) рублей (Иван) \\
 	\( S_{0} = 1108129 \) рублей (Андрей) \\
 	\( S_{0} = 4000000 \) рублей (Иван) \\
-	Решение: \\
-	(1): \\
-	A(Андрей) = \( (7000000 - 1108129) * \frac{\frac{29.2}{100*12} (1 + \frac{29.2}{100*12})^{(20 * 12)}}{(1 + \frac{29.2}{100*12})^{(20 * 12)} - 1} = 155042 \) рублей \\
-	A(Иван) = \( (14200000 - 4000000) * \frac{\frac{30}{100*12} (1 + \frac{30}{100*12})^{(20 * 12)}}{(1 + \frac{30}{100*12})^{(20 * 12)} - 1} = 255682\) рублей \\
-	(2): \\
-	A(Андрей) = \( (7000000 - 1108129) * \frac{\frac{29.2}{100*12} (1 + \frac{29.2}{100*12})^{(30 * 12)}}{(1 + \frac{29.2}{100*12})^{(30 * 12)} - 1} = 154650 \) рублей \\
-	A(Иван) = \( (14200000 - 4000000) * \frac{\frac{30}{100*12} (1 + \frac{30}{100*12})^{(30 * 12)}}{(1 + \frac{30}{100*12})^{(30 * 12)} - 1} = 255035\) рублей \\
-
-	\csvautotabularcenter{../calculations/annuitet.csv}
+	\\
+	Решение:
+	\begin{center} Аннуитетный платеж в течение 20 лет (Андрей) \end{center}
+	\csvautotabularcenter{../calculations/annuitet_20_Andrey.csv}
 	\\ \\ \\ 
-	\csvautotabularcenter{../calculations/differential.csv}
+	\begin{center} Дифференцированный платеж в течение 20 лет (Андрей) \end{center}
+	\csvautotabularcenter{../calculations/differential_20_Andrey.csv}
+	\pagebreak
+	\begin{center} Аннуитетный платеж в течение 30 лет (Андрей) \end{center}
+	\csvautotabularcenter{../calculations/annuitet_30_Andrey.csv}
+	\\ \\ \\ 
+	\begin{center} Дифференцированный платеж в течение 30 лет (Андрей) \end{center}
+	\csvautotabularcenter{../calculations/differential_30_Andrey.csv}
+	\pagebreak
+	\begin{center} Аннуитетный платеж в течение 20 лет (Иван) \end{center}
+	\csvautotabularcenter{../calculations/annuitet_20_Ivan.csv}
+	\\ \\ \\ 
+	\begin{center} Дифференцированный платеж в течение 20 лет (Иван) \end{center}
+	\csvautotabularcenter{../calculations/differential_20_Ivan.csv}	
+	\pagebreak
+	\begin{center} Аннуитетный платеж в течение 30 лет (Иван) \end{center}
+	\csvautotabularcenter{../calculations/annuitet_30_Ivan.csv}
+	\\ \\ \\ 
+	\begin{center} Дифференцированный платеж в течение 30 лет (Иван) \end{center}
+	\csvautotabularcenter{../calculations/differential_30_Ivan.csv}
+
 \end{document}
